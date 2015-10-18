@@ -1,0 +1,44 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+ 
+public class MusicReader {
+ 
+  private BufferedReader br;
+  
+  public MusicReader ()
+  {
+    
+  }
+  
+  public void open (String filename)
+  {
+    br = new BufferedReader(new FileReader(filename));
+  }
+  
+  public void close ()
+  {
+    if (br != null)
+      br.close();
+  }
+  
+  public String[] getSongData ()
+  {
+    if (br == null)
+      return null;
+    
+    String line = "";
+
+    line = br.readLine();
+    
+    if (line == null)
+      return null;
+    
+    String[] data = line.split(",");
+    
+    return data;
+    
+  }
+ 
+}
